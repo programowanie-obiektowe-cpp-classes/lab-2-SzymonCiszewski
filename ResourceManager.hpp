@@ -11,16 +11,15 @@ public:
     } 
     double get() const { return wynik; }
 
-    ResourceManager(const ResourceManager& manager)
+    ResourceManager(const ResourceManager& manager) : resource{new Resource}
     {
-        resource = new Resource(*manager.resource);
         wynik    = manager.wynik;
     }
     ResourceManager& operator=(const ResourceManager& other)
     {
         if (this != &other) {
             delete resource;
-            resource = new Resource(*other.resource);
+            resource = new Resource;
             wynik    = other.wynik;
         }
         return *this;
