@@ -6,10 +6,10 @@ class ResourceManager
 {   
 public:
     ResourceManager() { 
-        Resource resource;
-        wynik = resource.get();
+        Resource* resource = new Resource{};
+        wynik = resource->get();
     } 
-    double get() { return wynik; }
+    double get() const { return wynik; }
 
     ResourceManager(const ResourceManager& manager) : wynik{manager.wynik} {}
 
@@ -17,9 +17,10 @@ public:
         return *this;
     }
 
-    ~ResourceManager() = default;
+    ~ResourceManager() =default;
 
 
 private:
     double wynik;
+ 
 };
